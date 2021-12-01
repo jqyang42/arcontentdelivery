@@ -7,8 +7,13 @@ light_times = []
 dark_times = []
 for filename in glob.glob('Default 50 Trials/*.txt'):
     with open(filename, 'r') as f:
-        light_times.append(float(f.readline().split(':')[3]))
-        dark_times.append(float(f.readline().split(':')[3]))
+        lines = f.readlines()
+        for line in lines:
+            values = line.split(':')
+            if 'light' in values[0]:
+                light_times.append(float(values[3]))
+            else:
+                dark_times.append(float(values[3]))
 
 light_times = np.array(light_times)
 dark_times = np.array(dark_times)
