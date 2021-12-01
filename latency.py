@@ -5,7 +5,14 @@ import numpy as np
 
 light_times = []
 dark_times = []
-for filename in glob.glob('fish_200kTrials/*.txt'):
+file_model_Mb = {
+    'Default 50 Trials' : 148.00352,
+    'fish_100kTrials' : 45.472128,
+    'fish_200kTrials' : 64.0528,
+}
+
+folder = 'fish_100kTrials'
+for filename in glob.glob(f'{folder}/*.txt'):
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -24,6 +31,7 @@ def latency_calculations(dataset, title):
     with open(f'calculations/{title}.txt', 'w') as f:
         f.write(f'mean: {mean}\n')
         f.write(f'std: {std}\n')
+        f.write(f'throughput: {file_model_Mb[folder] / mean}\n')
 
     ax = sns.histplot(data=dataset, kde=True)
     graph_title = f'{title} Latency'
@@ -31,5 +39,5 @@ def latency_calculations(dataset, title):
     plt.savefig(f'graphs/{graph_title}.png')
     plt.clf()
 
-latency_calculations(dark_times, 'Fish 200k Dark Model')
-latency_calculations(light_times, 'Fish 200k Light Model')
+latency_calculations(dark_times, 'Fish 100k Dark Model')
+latency_calculations(light_times, 'Fish 100k Light Model')
