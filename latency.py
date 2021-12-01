@@ -16,7 +16,9 @@ dark_times = np.array(dark_times)
 def latency_calculations(dataset, title):
     mean = np.mean(dataset)
     std = np.std(dataset)
-    print(f'{title} - MEAN: {mean} - STD: {std}')
+    with open(f'calculations/{title}.txt', 'w') as f:
+        f.write(f'mean: {mean}\n')
+        f.write(f'std: {std}\n')
 
     ax = sns.histplot(data=dataset, kde=True)
     graph_title = f'{title} Latency'
