@@ -11,7 +11,12 @@ file_model_Mb = {
     'Fish 400k' : 148.00352,
     'Fish 2k' : 24.807808,
     'Fish 20k' : 29.271456,
-    'Busy Network' : 0
+    'Busy Network' : 0,
+    'Cloud 100k' : 45.472128,
+    'Cloud 200k' : 64.0528,
+    'Cloud 400k' : 148.00352,
+    'Cloud 2k' : 24.807808,
+    'Cloud 20k' : 29.271456, 
 }
 
 def latency_calculations(dataset, title):
