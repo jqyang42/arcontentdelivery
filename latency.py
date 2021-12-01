@@ -5,7 +5,7 @@ import numpy as np
 
 light_times = []
 dark_times = []
-for filename in glob.glob('fish_100kTrials/*.txt'):
+for filename in glob.glob('fish_200kTrials/*.txt'):
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
@@ -31,5 +31,5 @@ def latency_calculations(dataset, title):
     plt.savefig(f'graphs/{graph_title}.png')
     plt.clf()
 
-latency_calculations(dark_times, 'Fish 100k Dark Model')
-latency_calculations(light_times, 'Fish 100k Light Model')
+latency_calculations(dark_times, 'Fish 200k Dark Model')
+latency_calculations(light_times, 'Fish 200k Light Model')
