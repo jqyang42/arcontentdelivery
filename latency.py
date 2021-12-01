@@ -9,10 +9,11 @@ file_model_Mb = {
     'Default 50 Trials' : 148.00352,
     'fish_100kTrials' : 45.472128,
     'fish_200kTrials' : 64.0528,
-    'fish_400kTrials' : 148.00352
+    'fish_400kTrials' : 148.00352,
+    'fish_2kTrials' : 24.807808
 }
 
-folder = 'fish_400kTrials'
+folder = 'fish_2kTrials'
 for filename in glob.glob(f'{folder}/*.txt'):
     with open(filename, 'r') as f:
         lines = f.readlines()
@@ -40,5 +41,5 @@ def latency_calculations(dataset, title):
     plt.savefig(f'graphs/{graph_title}.png')
     plt.clf()
 
-latency_calculations(dark_times, 'Fish 400k Dark Model')
-latency_calculations(light_times, 'Fish 400k Light Model')
+latency_calculations(dark_times, 'Fish 2k Dark Model')
+latency_calculations(light_times, 'Fish 2k Light Model')
