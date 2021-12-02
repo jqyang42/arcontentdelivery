@@ -29,7 +29,7 @@ def latency_calculations(dataset, title):
             f.write(f'std: {std}\n')
             f.write(f'throughput: {file_model_Mb[title] / mean}\n')
 
-    ax = sns.histplot(data=dataset, element='step')
+    ax = sns.histplot(data=dataset, element='step', kde=True)
     graph_title = f'{title} Model Latency'
     ax.set(xlabel='Latency Times (sec)', ylabel='Count', title=graph_title)
     plt.tight_layout()
