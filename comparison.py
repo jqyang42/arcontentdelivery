@@ -8,14 +8,14 @@ def comparison_calculations(dataset, title):
     latency = dataset[['Edge Latency', 'Cloud Latency']]
     throughput = dataset[['Edge Throughput', 'Cloud Throughput']]
 
-    ax = sns.histplot(data=latency, multiple='stack')
+    ax = sns.histplot(data=latency, element='step')
     graph_title = f'{title} Average Latency Comparison'
     ax.set(xlabel='Latency Times (sec)', title=graph_title)
     plt.tight_layout()
     plt.savefig(f'graphs/{graph_title}_latency.png')
     plt.clf()
 
-    ax = sns.histplot(data=throughput, multiple='stack')
+    ax = sns.histplot(data=throughput, element='step')
     graph_title = f'{title} Average Throughput Comparison'
     ax.set(xlabel='Throughput (Mbps)', title=graph_title)
     plt.tight_layout()

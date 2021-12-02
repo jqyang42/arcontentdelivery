@@ -1,3 +1,4 @@
+from datetime import time
 import glob
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -28,7 +29,7 @@ def latency_calculations(dataset, title):
             f.write(f'std: {std}\n')
             f.write(f'throughput: {file_model_Mb[title] / mean}\n')
 
-    ax = sns.histplot(data=dataset, multiple='stack')
+    ax = sns.histplot(data=dataset, element='step')
     graph_title = f'{title} Model Latency'
     ax.set(xlabel='Latency Times (sec)', ylabel='Count', title=graph_title)
     plt.tight_layout()
@@ -52,4 +53,5 @@ for folder in glob.glob(f'trials/*'):
     light_times_np = np.array(light_times)
     dark_times_np = np.array(dark_times)
     times = pd.DataFrame(np.hstack((light_times_np[:,None], dark_times_np[:,None])), columns=['light', 'dark'])
+    times.to_csv(f'raw_data/{folder[7:]}.csv')
     latency_calculations(times, folder[7:])
