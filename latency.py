@@ -30,7 +30,7 @@ def latency_calculations(dataset, title):
 
     ax = sns.histplot(data=dataset, element='step')
     graph_title = f'{title} Model Latency'
-    ax.set(xlabel='Latency Times', title=graph_title)
+    ax.set(xlabel='Latency Times (sec)', ylabel='Count', title=graph_title)
     plt.tight_layout()
     plt.savefig(f'graphs/{graph_title}.png')
     plt.clf()
