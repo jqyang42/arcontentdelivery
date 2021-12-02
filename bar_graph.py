@@ -6,7 +6,7 @@ import pandas as pd
 
 def graph_bar(data, title, units):
     light_data = data[data['model'] == 'light']
-    ax = sns.barplot(data=light_data, x='triangle', y=title)
+    ax = sns.barplot(data=light_data, x='triangle', y=title, palette='Spectral')
     graph_title = f'Compression Average {title} Comparison'
     ax.set(xlabel='Fish Model by Triangle Count', ylabel=f'{title} ({units})', title=graph_title)
     plt.tight_layout()

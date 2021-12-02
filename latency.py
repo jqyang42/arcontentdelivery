@@ -1,4 +1,3 @@
-from datetime import time
 import glob
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -17,17 +16,23 @@ file_model_Mb = {
     'Cloud 200k' : 64.0528,
     'Cloud 400k' : 148.00352,
     'Cloud 2k' : 24.807808,
-    'Cloud 20k' : 29.271456, 
+    'Cloud 20k' : 29.271456,
+    'gltf' : {'light' : 709.804736, 'dark' : 101.5808}
 }
 
 def latency_calculations(dataset, title):
     for context in ['light', 'dark']:
         mean = np.mean(dataset[context])
         std = np.std(dataset[context])
+        if title == 'gltf':
+            size = file_model_Mb[title][context]
+        else:
+            size = file_model_Mb[title]
+
         with open(f'calculations/{title}_{context}.txt', 'w') as f:
             f.write(f'mean: {mean}\n')
             f.write(f'std: {std}\n')
-            f.write(f'throughput: {file_model_Mb[title] / mean}\n')
+            f.write(f'throughput: {size / mean}\n')
 
     ax = sns.histplot(data=dataset, element='step', kde=True)
     graph_title = f'{title} Model Latency'
